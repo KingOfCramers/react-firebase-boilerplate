@@ -12,6 +12,8 @@ export const history = createHistory();
 import DashboardPage from "../components/DashboardPage";
 import FourOhFour from "../components/FourOhFour";
 import Login from "../components/Login";
+import StoryPage from "../components/StoryPage";
+import EditStoryPage from "../components/EditStoryPage";
 
 const AppRouter = () => (
   <Router history={history} >
@@ -19,6 +21,8 @@ const AppRouter = () => (
       <Switch>
         <PublicRoute path="/" component={Login} exact={true} />
         <PrivateRoute exact={true} path="/dashboard" component={DashboardPage} />
+        <PrivateRoute path="/story/create" component={StoryPage} />
+        <PrivateRoute path="/story/:id" component={EditStoryPage} />
         <Route component={FourOhFour}/>
       </Switch>
     </div>

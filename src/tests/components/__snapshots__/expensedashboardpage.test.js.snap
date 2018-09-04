@@ -2,6 +2,11 @@
 
 exports[`Should render ExpenseDashboard page correctly 1`] = `
 <div>
-  DashboardPageContent
+  <Link
+    replace={false}
+    to="/story/create"
+  >
+    Stories
+  </Link>
 </div>
 `;

@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 
 // Redux + History
 import configureStore from "./store/configureStore";
+import { startSetTwitter } from "./actions/twitter";
 import { login, logout } from "./actions/auth";
 import AppRouter, { history } from "./routers/AppRouter"
 
@@ -41,10 +42,12 @@ ReactDOM.render(<Loading />, document.getElementById('app'));
 firebase.auth().onAuthStateChanged((user) => {
   if(user){
     store.dispatch(login(user.uid)); // Store uid prop inside Redux state.
-    renderApp(); // If logged in, render app w/ user data.
-    if (history.location.pathname === "/") { // On login page, to to dashboard.
-      history.push("/dashboard")
-    }
+    // store.dispatch(startSetTwitter()).then(() => {
+      renderApp(); // If logged in, render app w/ user data.
+      if (history.location.pathname === "/") { // On login page, to to dashboard.
+        history.push("/dashboard")
+    //  }
+    };
   } else {
     store.dispatch(logout()); // Remove uid.
     renderApp(); // Dont fetch data, rereoute to main login.
